@@ -11,9 +11,12 @@ public class CntNumber {
     public CntNumber(String name,BigDecimal number){
         this.name = name;
         this.number = number;
+        initialization(CountNumber);
     }
 
     //method
+
+    //型を変える
     static private char[] convert(BigDecimal number){
 
         //double型をString型に変換
@@ -24,6 +27,16 @@ public class CntNumber {
 
         return numberArray;
     };
+
+    //CountNumberの初期化
+    static private int[] initialization(int CountNumber[]){
+
+        for (int i = 0; i < CountNumber.length; i++) {
+            CountNumber[i] = 0;
+        }
+
+        return CountNumber;
+    }
 
     //指定された配列の要素をカウントする
     static private int[] up(int num){
@@ -37,7 +50,7 @@ public class CntNumber {
         for (int i = 0; i < numberArray.length; i++) {
             switch (numberArray[i]) {
                 case '0' :
-                    up(0);; 
+                    up(0); 
                     break;
                 case '1':
                     up(1);
