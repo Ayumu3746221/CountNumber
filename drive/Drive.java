@@ -44,7 +44,10 @@ public class Drive {
 		CntNumber sqrtThree = new CntNumber("√3", sqrtThree_result);
 		sqrtThree.displayInfo();
 
-		
+		//ネイピア数の計算
+		BigDecimal e_result = napier(digit);
+		CntNumber e = new CntNumber("e", e_result);
+		e.displayInfo();
 	}
 
 	//ニュートン法
@@ -61,6 +64,17 @@ public class Drive {
     }
 
 	//ネイピア数の計算
-	
+	public static BigDecimal napier(MathContext digit){
+		BigDecimal result = BigDecimal.ONE; //初期値を1に設定
+		BigDecimal factorial = BigDecimal.ONE; //階乗の計算に使用するBigDecimal
+
+		//ネイピア数を計算
+		for(int i = 1; i <= digit.getPrecision(); i++){
+			factorial = factorial.multiply(BigDecimal.valueOf(i));
+			result = result.add(BigDecimal.ONE.divide(factorial, digit));
+		}
+
+		return result;
+	}
 
 }
