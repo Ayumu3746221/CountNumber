@@ -48,6 +48,11 @@ public class Drive {
 		BigDecimal e_result = napier(digit);
 		CntNumber e = new CntNumber("e", e_result);
 		e.displayInfo();
+
+		//πの計算
+		BigDecimal pi_result = Pi(digit);
+		CntNumber pi = new CntNumber("π", pi_result);
+		pi.displayInfo();
 	}
 
 	//ニュートン法
@@ -75,6 +80,23 @@ public class Drive {
 		}
 
 		return result;
+	}
+
+	//πの計算
+	public static BigDecimal Pi(MathContext digit){
+		BigDecimal pi = BigDecimal.ZERO;
+		BigDecimal term;
+
+		//マチンの公式
+		for(int k = 0; k < 1000; k++){
+			BigDecimal numerator = BigDecimal.valueOf(-1).pow(k);
+			BigDecimal denominator = BigDecimal.valueOf(2 * k + 1);
+			term = numerator.divide(denominator,digit);
+			pi = pi.add(term);
+		}
+
+		pi = pi.multiply(BigDecimal.valueOf(4));
+		return pi;
 	}
 
 }
