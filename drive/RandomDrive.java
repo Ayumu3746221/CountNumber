@@ -1,15 +1,16 @@
 package drive;
 
-import counter.CntNumber;
 import java.math.BigDecimal;
 import java.util.Random;
+
+import counter.CntNumber;
 
 public class RandomDrive {
 
 	public static void main(String[] args) {
 
 		//lengthに代入された値だけランダムな数字を生成
-		int length = 1000;
+		int length = 10000;
 		StringBuilder list = new StringBuilder(length);
 		Random random = new Random();
 
